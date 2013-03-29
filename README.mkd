@@ -1,0 +1,11 @@
+Implementation of Reverse Time Migration On FPGA
+===
+
+This thesis introduce how to implement the RTM (Reverse Time Migration) on 
+FPGA. 
+
+Thanks
+===
+Thanks for @zhibo sharing the template of the template of the thesis on 
+[github](https://github.com/zhibo/sysuthesis). I make on some modification 
+on it that will satisfy my own need.
