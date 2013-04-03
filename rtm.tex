@@ -30,10 +30,60 @@ decades to be commercially implemented.
 \subsection{Mathematical Derivation of RTM}
 
 If we assume that the wave that the wave injects is acoustic wave (sound
-wave), then we can use the acoustic wave equation as the first step of the
-derivation.
+wave), then we can use the acoustic wave equation (\ref{eq:acoustic}) as
+the first step of the derivation.
 
 \begin{equation}
   \frac{1}{c^2}\cdot\frac{\partial ^2u}{\partial t^2}=\bigtriangledown ^2u +s
+  \label{eq:acoustic}
 \end{equation}
+
+where \( u = u(x, y, z, t) \) is the pressure field, \(c = c(x, y, z) \) is
+the velocity field, \( s = s(x, y, z, t) \) is the source term, and \(
+\bigtriangledown ^2 \) is the three dimensional Laplace operator.
+
+Dablain (1986) effectively applies explicit high-order finite
+difference spatial derivatives to the acoustic wave equation.
+We also apply high-order spatial derivatives to the acoustic
+wave equation. Using the \( 2^{nd} \) in space finite differences, the
+forward and backward wave field propagations can be calculated as
+\cite{rtm_psdm}:
+
+\begin{equation}
+  u ^{l(+/-)1} _{i,j,k} = 2u^l _{i,j,k} - u^{l(+/-)1} _{i,j,k} + \Delta t^2
+  c^2 _{i,j,k} (\left( \bigtriangledown ^2 u ^l _{i,j,k}  \right) ^ n_0 +
+  s ^l _{i,j,k})
+\end{equation}
+
+where
+
+\[u^l _{i,j,k} = u(i\Delta x, j \Delta y, k \Delta z, l \Delta t),\]
+\[ s^l _{i,j,k} = s(i\Delta x, j \Delta y, k \Delta z, l \Delta t),\]
+\[ c_{i,j,k} = u(i\Delta x, j \Delta y, k \Delta z), \]
+
+and \( \Delta t \) =  the temporal step size for finite differencing, \(
+\Delta x \), \( \Delta y \), and \( \Delta z \) are the spatial sampling
+intervals, and \( \bigtriangledown ^2 u^t _{x, y, z} \) the Laplacian
+calculated with \( n^{th} \) order of accuracy at each time step t, centered at an x-, y-, and z- location. During the backward extrapolation the source
+term is replaced by the recorded input data. The Laplacian with
+\( n^{th} _0 \) order accuracy can be given by ().
+
+\begin{equation}
+  (\bigtriangledown ^2 u ^l _{i,j,k})^n_0 = w_0(\frac{1}{\Delta x^2} +
+  \frac{1}{\Delta y^2} + \frac{1}{\Delta z^2})u^l _{i, j, k} + \Phi
+\end{equation}
+
+where
+
+\begin{equation}
+  \begin{split}
+    \frac{\Phi}{\sum_{m=1} ^{n_0 / 2}w_m} =
+      &\frac{1}{\Delta x^2}\left(u^l _{i-m, j, k}+ u ^l _{i+m, j, k} 
+      \right) + \\
+      &\frac{1}{\Delta y^2}\left(u^l _{i, j-m, k}+ u ^l _{i, j+m, k} 
+      \right) + \\
+      &\frac{1}{\Delta x^2}\left(u^l _{i, j, k-m}+ u ^l _{i, j, k+m} \right)
+  \end{split}
+\end{equation}
+
 
