@@ -1,0 +1,39 @@
+\section{RTM Algorithm and Analysis}
+
+As it is mentioned in the previous section that the Reverse Time Migration
+algorithm can gain a big improvement but it is computationally demanding.
+In this section, we have a look at the detail of the algorithm and present
+a computation complexity analyze of it.
+
+The main steps of the algorithm is explained as below\cite{rtm}.
+
+\begin{enumerate}
+\item the forward extrapolation of a modelled source waved for each shot
+  location through a gridded velocity model is performed. And the wave
+  field at each time step is saved for later application of the ``imaging
+  condition''.
+\item the receiver wave field for each shot, which is recorded in the
+  field, is backward propagated in time through the same velocity model.
+\item at each time step, the corresponding source and receiver wave fields
+  are correlated by applying the imaging condition. Thus, the final
+  wave field in the source propagating scheme is correlated with the
+  initial wave field in the receiver propagation scheme, and so on backward
+  through the receiver propagation.
+\item the result are summed to form a partial image volume for each shot.
+\item the image volumes for consecutive gathers are spatially summed to
+  produce the final pre-stack depth image.
+\end{enumerate}
+
+So, now you may know why RTM is so computation expensive and has several
+decades to be commercially implemented.
+
+\subsection{Mathematical Derivation of RTM}
+
+If we assume that the wave that the wave injects is acoustic wave (sound
+wave), then we can use the acoustic wave equation as the first step of the
+derivation.
+
+\begin{equation}
+  \frac{1}{c^2}\cdot\frac{\partial ^2u}{\partial t^2}=\bigtriangledown ^2u +s
+\end{equation}
+

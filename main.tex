@@ -1,115 +1,53 @@
-% vim:ts=4:sw=4
-%
-% Copyright (c) 2008-2009 solvethis
-% Copyright (c) 2010-2012 Casper Ti. Vector
-% Public domain.
-%
-% 使用前请先仔细阅读 pkuthss 和 biblatex-caspervector 的文档，
-% 特别是其中的 FAQ 部分和用红色强调的部分。
-% 两者可在终端/命令提示符中用
-%   texdoc pkuthss
-%   texdoc biblatex-caspervector
-% 调出。
-
-% 在黑白打印时彩色链接可能变成浅灰色，此时可将“colorlinks”改为“nocolorlinks”。
-\documentclass[adobefonts,UTF8, colorlinks, notocbibind]{pkuthss}
-
-% 使用 biblatex 排版参考文献，并规定其格式。
-\usepackage[backend = biber, style = caspervector, utf8]{biblatex}
-% 使得打字机粗体可以被使用。
-\usepackage{lmodern}
-% 产生 originauth.tex 里的 \square。
+%% LyX 2.0.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,english]{article}
+\usepackage[latin9]{inputenc}
+%\setlength{\headheight}{15pt}
+%\usepackage{fancyhdr}
+%\pagestyle{p}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{mathtools}
 \usepackage{amssymb}
-% 提供 Verbatim 环境和 \VerbatimInput 命令。
-\usepackage{fancyvrb}
-% 图像包
-\usepackage{subcaption}
-% --引入其他pdf文件--
-\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage[unicode=false,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
 
-% 使被强调的内容为红色。
-\newcommand{\myemph}[1]{\emph{\textcolor{red}{#1}}}
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[english]{babel}
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
 
-% pkuthss 文档模版的版本。
-\newcommand{\docversion}{v1.4 rc1}
 
-% 设定文档的基本信息。
-\pkuthssinfo{
-	cthesisname = {本科生毕业论文}, ethesisname = {Undergraduate Thesis},
-	ctitle = {中山大学论文文档模版\\pkuthss \docversion},
-	% “\\”在设定 pdf 属性时会被自动过滤掉，于是得到的 pdf 属性中标题为
-	%   The PKU dissertation document classpkuthss [版本号]
-	% 此处指定其被替换为“: ”，以使之为
-	%   The PKU dissertation document class: pkuthss [版本号]
-	etitle = {%
-		The PKU dissertation document class\texorpdfstring{\\}{: }%
-		pkuthss \docversion%
-	},
-	cauthor = {罗尼 $\cdot$ 奥沙利文},
-	eauthor = {Ronnie O'Sullivan},
-	studentid = {07302???},
-	date = {二〇一一年五月},
-	school = {信息科学与技术学院},
-	cmajor = {计算机科学与技术}, emajor = {Computer Science and Technology},
-	direction = {强力斯诺克},
-	cmentor = {XX 教授}, ementor = {Prof.\ XX},
-	ckeywords = {\LaTeX2e{}，排版，文档类，\CTeX{}},
-	ekeywords = {\LaTeX2e{}, typesetting, document class, \CTeX{}}
-}
-% 导入参考文献数据库（注意不要省略“.bib”）。
-\addbibresource{sample.bib}
+\makeatother
 
 \begin{document}
-	% 以下为正文之前的部分。
-	\frontmatter
 
-	% 自动生成标题页。
-	\maketitle
-	% --可以使用includepdf直接将转换好的附表或封面加入--
-	%\includepdf[pages=1-2]{chap/cover.pdf}
-	%\includepdf[pages=1-2]{chap/report.pdf}
-	%\includepdf[pages=1-2]{chap/check.pdf}
-	%\includepdf[pages=1-2]{chap/reply.pdf}
-	%\includepdf[pages=1-2]{chap/statement.pdf}
-	% 版权声明。
-	\include{chap/copyright}
-	% 中英文摘要。
-	\include{chap/abstract}
-	% 自动生成目录。
-	\tableofcontents
+\title{Implemention of Reverse Time Migration on FPGA}
+\author{Conghui He}
 
-	% 以下为正文。
-	\mainmatter
+\maketitle
 
-	% 绪言。
-	\include{chap/introduction}
-	% 各章节。
-	\include{chap/chap1}
-	\include{chap/chap2}
-	\include{chap/chap3}
-	% 结论。
-	\include{chap/conclusion}
+\tableofcontents
+%include the introduction
+\include{introduction}
+%\input{introduction.tex}
 
-	% 正文中的附录部分。
-	\appendix
-	% 排版参考文献列表，并使其出现在目录中。
-	% 如果同时要使参考文献列表参与章节编号，可将“bibintoc”改为“bibnumbered”。
-	\printbibliography[heading = bibintoc]
-	% 各附录。
-	\include{chap/encl1}
-	\include{chap/encl2}
+\include{fpga}
 
-	% 以下为正文之后的部分。
-	\backmatter
+\include{seismic}
+\include{rtm}
 
-	% 致谢。
-	\include{chap/acknowledge}
-	% 原创性声明和使用授权说明。
-	\include{chap/originauth}
-	% 原创性声明和使用授权说明，不显示页码。
-	%\pagestyle{empty}
-	%\include{chap/originauth}
-	%--成绩评定表--
-	% \includepdf[pages=1-2]{chap/grade.pdf}
+%% The following contains your structure of your thesis and your
+%% contribution, comparison with CPU version.
+
+
+% include the bibliography
+\include{bibliography}
+%\input{bibliography.tex}
+
 \end{document}
-

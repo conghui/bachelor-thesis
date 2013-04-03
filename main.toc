@@ -1,0 +1,14 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Field Programmable Gate Array}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}An Overview of FPGA}{7}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}The Architecture of FPGA}{7}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Designing FPGA with Maxcompiler}{10}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}Maxeler Acceleration Technology}{11}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}Development Flow}{12}{subsubsection.2.3.2}
+\contentsline {subsection}{\numberline {2.4}Advantage of FPGA Designing}{14}{subsection.2.4}
+\contentsline {section}{\numberline {3}Seismic Migration}{15}{section.3}
+\contentsline {subsection}{\numberline {3.1}General Process of Seismic Exploration}{15}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Reverse Time Migration}{17}{subsection.3.2}
+\contentsline {section}{\numberline {4}RTM Algorithm and Analysis}{20}{section.4}
+\contentsline {subsection}{\numberline {4.1}Mathematical Derivation of RTM}{20}{subsection.4.1}

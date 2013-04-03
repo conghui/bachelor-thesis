@@ -1,0 +1,17 @@
+#!/bin/sh
+
+JOBNAME=main
+LATEX=xelatex
+
+
+MAKE=make
+RM="rm -f"
+CP=cp
+
+${CP} ${JOBNAME}.tex /tmp/${JOBNAME}.tex
+${RM} *.aux
+${RM} *.log
+${RM} *.lyx*
+${RM} *.out
+${RM} *.pdf
+${CP} /tmp/${JOBNAME}.tex ${JOBNAME}.tex

@@ -1,0 +1,41 @@
+# Abstract
+
+
+# Introudction
+
+##
+
+## FPGA Logic Programming
+
+## Reverse Time Migration
+## Structure Of The Thesis
+
+# FPGA
+## Structure of FPGA
+## Benifites of FPGA
+##
+
+# Seismic Migration
+
+## General Process of Exploration Seismology
+### Data Collecting
+### Data Processing
+### Data Anaylizing
+
+## Forward Modeling
+
+## Reverse Time Migration
+
+# Implementation of RTM
+## Stencil Operation
+## Implemented by CPU
+## Implemented by FPGA
+## Result
+
+# Performance Comparison
+
+
+# citation
+http://en.wikipedia.org/wiki/Field-programmable_gate_array
+http://www.linuxjournal.com/article/6857
+http://www.linuxjournal.com/magazine/fpga-programming-linux
