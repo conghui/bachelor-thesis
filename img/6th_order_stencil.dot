@@ -1,0 +1,14 @@
+digraph stencil_6 {
+
+  rankdir = "LR";
+  shape = "box";
+  a [label = "x-3", shape="box"];
+  b [label = "x-2", shape="box"];
+  c [label = "x-1", shape="box"];
+  d [label = "x"  , shape="box"];
+  e [label = "x+3", shape="box"];
+  f [label = "x+2", shape="box"];
+  g [label = "x+1", shape="box"];
+  
+  a ->  b -> c -> d -> e -> f -> g [arrowhead = "none"];
+}

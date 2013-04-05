@@ -12,4 +12,3 @@
 \contentsline {subsection}{\numberline {3.2}Reverse Time Migration}{17}{subsection.3.2}
 \contentsline {section}{\numberline {4}RTM Algorithm and Analysis}{20}{section.4}
 \contentsline {subsection}{\numberline {4.1}Mathematical Derivation of RTM}{20}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Complexity analyze}{24}{subsection.4.2}
