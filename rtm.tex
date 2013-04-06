@@ -195,7 +195,58 @@ Listing (\ref{lst:stencil_code_1element}) only works for 1 element in the
 array. In practice and in the previous equation (\ref{eq:acoustic}), all
 the elements in the three dimension volume should be calculated one by one
 except for the boundaries. Thus the complexity of calculating the stencil
-in a volume is \BigO{n^3} 
+in a volume is \BigO{n^3}
+
+Each step of the iteration, what we desire is to calculate the the wave
+field of time \( t + 1 \), moving the item \( t \) and \(t-1\) to the right
+side of the assignment operator of equation \(\ref{eq:acoustic4}\), we get
+the equation (\ref{eq:acoustic5}).
+
+\begin{equation}
+  u_{t+1} =
+  2u_{t} - u_{t-1} +  dt^2 \left( c^2\cdot\left( \frac{1}{dh^2} \cdot stencil\left( p_t \right) \right)
+ +s_t\right)
+  \label{eq:acoustic5}
+\end{equation}
+
+Now, it is easy to write the pseudo code of coressponding to the equaltion
+(\ref{eq:acoustic5}). Storing the wave field in a 4 dimensional array,
+including t, x, y, and z dimension. s is also a one dimensional array
+storing the the source signal. The psedo code is shown in Listing
+(\ref{lst:acoustic}) in page \pageref{lst:acoustic}.
+
+\begin{figure}
+  \centering
+  \lstinputlisting[
+    caption={Pseudo code of calculating forward acoustic wave equation},
+    label={lst:acoustic}
+  ]
+  {code/acoustic.c}
+\end{figure}
+
+As you can see, the array u is a four dimensional array. If the nz = ny =
+nx = 512, and nt = 500, the size of the array is \( 512^3 * 500 * 4 =
+268435456000 \) bytes, that is 250G, which is impossible to store in the
+memory. However, the size of the array is much smaller than that in the
+reality, because assuming that dt = 0.002, nt = 500, dh = 20, it is recorded for
+only 1 second of sound for the cude of 10240m * 10240m * 10240m, nearly a
+cube of 10km for a single shot.
+
+What's worse, the algorithm listed in Listing (\ref{lst:acoustic}) is only
+part of the RTM algorithm. The Reverse Time Migration algorithm is a
+two-way pre-stack depth migration, which is explained in the previous
+section, the wave propagation of the source and receiver should be
+correlated, to gain the resulting image. The pseudo code\cite{fu11} is shown in
+Listing (\ref{lst:rtm}) in page \pageref{lst:rtm}.
+
+\begin{figure}[h]
+  \centering
+  \lstinputlisting[
+    caption={Pseudo code of the RTM algorithm},
+    label={lst:rtm}
+  ]{code/rtm.c}
+\end{figure}
+
 \subsection{Complexity analyze}
 
 Dablain (1986) effectively applies explicit high-order finite
@@ -272,8 +323,26 @@ The cost of the method is approximately given by the following equation:
 
 \begin{equation}
   C_e \approx 2n_t n_x n_y n_z \left( 3n_0 + 19 \right)
+  \label{eq:complexity}
 \end{equation}
 
 Where \( C_e \) is the number of floating point operations; \( n_t \) is
 the number of time steps; \( n_x , n_y , n_z \) are the number of samples
 in the x, y and z directions.
+
+So equation (\ref{eq:complexity}) is similar for the algorithm in Listing
+(\ref{lst:rtm}) in page \pageref{lst:rtm} for only a single shot. Adding
+the number of shots to the complexity, equation (\ref{eq:complexity})
+become (\ref{eq:complexity2}).
+
+\begin{equation}
+  C_e \approx 2n_s n_t n_x n_y n_z \left( 3n_0 + 19 \right)
+  \label{eq:complexity2}
+\end{equation}
+
+It is almost unable to calculate such a algorithm in general purpose 
+computer in a short time. What's more, the memory can not satisfy the 
+requirement. The size of cache in the general purpose computer or some advanced 
+server is usually several mega bytes. It is rather small compared with the 
+size of the wave field array. The use of cache doesn't gain much in this 
+application.
