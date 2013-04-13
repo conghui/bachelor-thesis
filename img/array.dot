@@ -1,0 +1,6 @@
+digraph array {
+  //struct1 [shape="record", 
+           //label="end|||||+3|+2|+1|A|-1|-2|-3||||start"];
+  struct2 [shape="record",
+           label="end|||||x+3|x+2|x+1|x|x-1|x-2|x-3||||start"];
+}

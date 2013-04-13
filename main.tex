@@ -7,6 +7,7 @@
 %\pagestyle{p}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+\usepackage[T1]{fontenc}
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{dot2texi}
@@ -67,15 +68,17 @@ backgroundcolor=\color{white},   % choose the background color; you must add \us
 
 \maketitle
 
+\include{abstract}
+
 \tableofcontents
-%include the introduction
+
 \include{introduction}
-%\input{introduction.tex}
-
 \include{fpga}
-
 \include{seismic}
 \include{rtm}
+\include{implement}
+\include{comparison}
+\include{conclusion}
 
 %% The following contains your structure of your thesis and your
 %% contribution, comparison with CPU version.
