@@ -1,4 +1,57 @@
-\section{Performance comparision} % (fold)
+\section{Performance comparison} % (fold)
 \label{sec:Performance comparision}
 
-% section Performance comparision (end)
+Given there there is an version of Reverse Time Migration algorithm that is
+implemented on CPU as the benchmark, the comparison is the running
+performance (time) between on CPU and FPGA. Of course, the most essential
+and important thing is to ensure the correctness of the implementation of
+FPGA, which is done by compare the output image (cube) of CPU and FPGA cell
+by cell when they accept the same input data.
+
+In my implementation, the single precision floating point\foot{32 bit, 8 
+  bit for exponent and 23 bit for mantissa) is used, so the difference of 
+  the two cell is \( \epsilon = 10^(-23) \). If the difference of the cells 
+on CPU and FPGA in the same location within the \( \epsilon \), we treat 
+the two floating point values identical. If each cell in CPU and GPU is 
+identical, the whole image are the same. Thus proving the correctness of 
+FPGA implementation.
+
+Given that the implementation of RTM algorithm is correct, I endeavor to 
+compare the performance between the two implementation. There are several 
+parameters impacting the required running time, including the number of 
+shots, the number of time steps and the size of the cube. In this section, 
+I compare the performance within one shot, because the running time is 
+linear to the number of shots. I compares the running 
+time when the size of cube varies first, and then compare the consuming 
+running when the number of time steps varies.
+
+\subsubsection{Platform Information} % (fold)
+
+In this subsection, the platform for both the CPU and FPGA is introduced. 
+The comparison in the rest of this section is operated on i7 CPU, which 
+includes 8 cores, with the frequency of each core 2.93GHz. The FPGA used in 
+this implementation is a \emph{Xilinx V6-SXT475} whose frequency is about 
+100MHz. Figure \ref{fig:host_and_device_info} shows the  detail information 
+of the host (CPU) and device (FPGA).
+
+\label{ssub:Platform information}
+
+% subsubsection Platform information (end)
+\subsection{Running Time vs. Cube Size} % (fold)
+
+The cube size, the array that used for iterating, represents the size of 
+the seismic exploration. Given \( dx = 20m \) and the cube is a \( 32 
+\times 32 \times 32 \) array, the practical size in reality is a cube whose 
+edge is 640m long, which is fairly small. The smaller value of dx is, the 
+higher the resolution is. However, we need to change expand the size of the 
+array to gain the same practical size if we decrease the value of dx.
+
+
+Given that the number of time steps is 100, while the size of the cube 
+varies, from 32 to 416, 
+
+\label{sub:Running Time vs. Cube Si}
+
+% subsection Running Time vs. Cube Si (end)
+
+% section Performance comparison (end)
