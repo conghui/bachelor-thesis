@@ -1,7 +1,4 @@
-\section{Performance comparison}
-
-% (fold)
-\label{sec:Performance comparision}
+\section{Results And Comparison} % (fold)
 
 Given there there is an version of Reverse Time Migration algorithm
 that is implemented on CPU as the benchmark, the comparison is the
@@ -64,18 +61,26 @@ device}
 
 \end{figure}
 
-To record the running time, the Unix API \emph{gettimeofdate()} is preferred 
-to the \emph{clock()} function in C library because the 
-\emph{clock()} function may make some mistake while the code is running on 
-the device. The time that is recorded by \emph{gettimeofdate()} is similar 
+To record the running time, the Unix API \emph{gettimeofdate()} is preferred
+to the \emph{clock()} function in C library because the
+\emph{clock()} function may make some mistake while the code is running on
+the device. The time that is recorded by \emph{gettimeofdate()} is similar
 to the wall clock.
 
 \label{ssub:Platform information}
 
 
 \subsection{Running Time vs. Cube Size}
+\label{sub:Running Time vs. Cube Si}
 
 % (fold)
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.3]{img/t10size16to256.png}
+  \caption{Comparison of time used between CPU and FPGA when size varies}
+  \label{fig:comparison_1}
+\end{figure}
 
 The cube size, the array that used for iterating, represents the size
 of the seismic exploration. Given \ensuremath{dx=20m}
@@ -86,14 +91,80 @@ the resolution is. However, we need to change expand the size of the
 array to gain the same practical size if we decrease the value of
 dx.
 
-Given that the number of time steps is 10, which is a fairly small number 
-purely used for simulation, but in reality, its range is between thousands 
-to hundred of thousands, while the size of the cube varies, from 32 to 416. 
-Figure (\ref{fig:comparison-1}) depicts the running time used by them.
+Given that the number of time steps is 10, which is a fairly small number
+purely used for simulation, but in reality, its range is between thousands
+to hundred of thousands, while the size of the cube varies, from 32 to 416.
+Figure (\ref{fig:comparison_1}) depicts the running time used by them.
 
-\label{sub:Running Time vs. Cube Si}
+It shows that when the cube is
+small, calculation in FPGA may take larger amount of time than that in CPU
+because data in the host memory need to be transferred to the device, and
+the transfer the data back to the host when the core calculation is done.
+However, as the size of the cube increase, the host needs more and more
+time than the device. In typical, the calculation time needed by the CPU is
+conform to function \( f(x) = ax^3 \) because complexity of the algorithm
+in the inner stencil operation is \(O(n^3)\) while it is not in FPGA.
+
+Another point that affects the running time of the host code is the cache.
+When the size is small, part of the data can be stored on the cache of the
+CPU, resulting fast speed in the host code. However, when the size of the
+cube increase, the cache cannot hold the whole array, even only part of the
+array, thus increasing the miss rate for the cache indexing.
+
+The bandwidth of PCI express and the frequency of FPGA affect the
+calculation speed of FPGA. In the current implementation, no optimization
+is applied to the FPGA kernel design. So the resource usage is quite low,
+neary 6.89\% of Look Up Table (LUT), 3.89\% of Flip Flops (FF) and 1.59\%
+of Digital Signal Processor (DSP). Lots of work can be done in the
+optimization of the kernel, but it is not discuss in this thesis.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.3]{img/t10size16to256_log.png}
+  \caption{Transform time t to log(t), then compare them}
+  \label{fig:comparison_2}
+\end{figure}
+
+To have a deeper understanding to the time used in both CPU and FPGA,
+Figure (\ref{fig:comparison_2}) transform the time used \( t \) in each
+point to \(\log_2\left( t \right) \). So it is easy to identify the details
+when the size of the cube is small. Figure (\ref{fig:comparison_2}) shows
+that time consumed by CPU is less than that by FPGA when the size is less
+than 50. That is because the data should be transferred to FPGA through PCI
+Express and be transferred back from the device after the calculation.
+On the other hand, the CPU can make full use of cache when the size of the
+array is small, resulting in relative high cache hit rate.
 
 % subsection Running Time vs. Cube Si (end)
 
+\subsection{Running Time vs.  Time Steps} % (fold)
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.32]{img/size256t10to110.png}
+  \caption{Comparison of time when time steps varies}
+  \label{fig:comparison_3}
+\end{figure}
+
+It is a good idea to let only one parameter varies while keeping others
+still. So this time, we keep the size of the cube as \( 256 \times 256
+\times 256 \) and let the number of time steps varies. Figure
+(\ref{fig:comparison_3}) depicts the relation between the running time and
+the number of steps of both CPU and FPGA. The shape of the CPU line is 
+pseudo-linear, because as the number of time steps increase, the cache hit 
+rate will decrease and miss rate will increase, resulting in high memory 
+accessing latency, which will decrease the total computational time 
+dramatically. The running time of FPGA is relatively stable than that of 
+CPU, and its slope is much gentle than that of CPU's. The FPGA takes about 
+100 second to make the wave field propagate for 110 steps while the CPU 
+needs about 500 seconds to do the same task. 
+
+The number of time steps 
+varies from thousands to tens of thousands in practical, and the size of 
+the cube is about hundreds of GB or TBs, which is nearly impossible to 
+store them in local memory. But it is feasible to implement it on FPGA 
+because once the kernel is designed, the data will flow to the kernel 
+element by element like streams. Part of the data can flow to the kernel 
+first, and then follows another part of the data.
 
 % section Performance comparison (end)

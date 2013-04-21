@@ -1,0 +1,11 @@
+set datafile commentschars "#%"
+
+set xlabel "log2 of size of the cube (x,y,z)"
+set ylabel "log of time used"
+set autoscale
+set key at 5, 6.5
+plot "t10size16to416_log2.out" using 1:2 title 'CPU' with linespoints, \
+     "t10size16to416_log2.out" using 1:3 title 'FPGA' with linespoints
+
+pause mouse
+# vim: ft=gnuplot

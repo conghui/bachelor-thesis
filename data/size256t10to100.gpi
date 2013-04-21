@@ -1,0 +1,7 @@
+set xlabel "# of time steps"
+set ylabel "Time used (second)"
+
+plot "size256t10to100.out" using 1:2 title 'CPU' with linespoints, \
+     "size256t10to100.out" using 1:3 title 'FPGA' with linespoints
+
+pause mouse
