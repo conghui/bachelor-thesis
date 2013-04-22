@@ -1,26 +1,32 @@
-\section{Conclusion} % (fold)
+\section{Conclusion And Outlook} % (fold)
 \label{sec:Conclusion}
 
-This thesis presents Field Programmable Gate Array (FPGA) designing with 
-the help of Maxeler OS and Reverse Time Migration (RTM) algorithm, which is 
-the most computationally demanding algorithm in oil and gas exploration 
-operations. In addition, the thesis presents FPGA-based solution for the 
+This thesis presents Field Programmable Gate Array (FPGA) designing with
+the help of Maxeler OS and Reverse Time Migration (RTM) algorithm, which is
+the most computationally demanding algorithm in oil and gas exploration
+operations. In addition, the thesis presents FPGA-based solution for the
 RTM algorithm.
 
-By utilizing the reconfigurability of the FPGA device, my RTM design 
-manages to speed up the calculation in term of the hardware calculation 
-instead of software calculation. When comparing to Intel(R) Core(TM) i7 
-CPU, the naive implementation of FPGA achieves 6X speed up without any 
-optimization. 
+By utilizing the reconfigurability of the FPGA device, my RTM design
+manages to speed up the calculation in term of the hardware calculation
+instead of software calculation. When comparing to Intel(R) Core(TM) i7
+CPU, the naive implementation of FPGA achieves 6X speed up without any
+optimization.
 
-I think FPGA is becoming efficient High Performance Computing solution, 
-which is an alternative to conventional CPU and GPU, because it has 
-abundant computation and storage resources on the board. What more, 
-paralleling the FPGA kernel by utilizing more FPGA resource is a good way to 
-optimize the FPGA kernel, which will result in better performance. 
-Meanwhile, users can provide other boost to the performance as they can 
-perform customization on various aspect of the design. These unique 
-properties makes FPGAs a preferable choice for many 
+I think FPGA is becoming efficient High Performance Computing solution,
+which is an alternative to conventional CPU and GPU, because it has
+abundant computation and storage resources on the board. What more,
+paralleling the FPGA kernel by utilizing more FPGA resource is a good way to
+optimize the FPGA kernel, which will result in better performance.
+Meanwhile, users can provide other boost to the performance as they can
+perform customization on various aspect of the design. These unique
+properties makes FPGAs a preferable choice for many
 computationally-intensive application.
 
+The current solution based on FPGA for the RTM algorithm is of no
+optimization, and treat the wave field of boundary as zeros. More work can
+be done on the optimization on FPGA, which will increase the usage of it
+and  increase its performance. In addition, some tools can be used to draw
+the image from the RTM output, which gives us a more intuitive insight of the
+structure in the interior of the earth.
 % section Conclusion (end)
