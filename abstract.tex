@@ -1,22 +1,31 @@
 \begin{abstract}
 
-  The goal of exploration seismology is to find oil and gas reservoirs by 
-  seismically imaging the earth’s reflectivity distribution The 
-  conventional one-way wave equation pre-stack depth migration algorithm is 
-  relatively fast but not able to identify the potential existence of 
-  hydrocarbon in complex geology. The Reverse time pre-stack depth 
-  migration (RTM) , which use the two way acoustic wave equation, offers 
-  insights into complex geology that were previously impossible to 
-  interpret or understanding using seismic data.  However it is the most 
-  computationally-demanding algorithm in the oil and gas exploration which 
-  was considered impractical for production 3D depth imaging project using 
-  conventional CPUs. Thus hardware accelerator like GPUs and Field 
-  Programmable Gate Arrays (FPGAs) emerged and have been used as an 
-  alternative for the conventional computing architectures (CPUs) in 
-  science computing application and have shown considerable speed-ups.  
-  Compared with CPUs, FPGA has a better performance but low power 
-  consumption where logics and algorithms are coded directly into hardware, 
-  however, only a few applications are implemented on FPGA because the 
-  steep learning curve for the developers. This thesis, this work, presents 
-  a FPGA-based solution for the 3D Reverse Time Migration algorithm, 
+  The goal of exploration seismology is to find oil and gas reservoirs by
+  seismically imaging the earth’s reflectivity distribution The
+  conventional one-way wave equation pre-stack depth migration algorithm is
+  relatively fast but not able to identify the potential existence of
+  hydrocarbon in complex geology. The Reverse time pre-stack depth
+  migration (RTM) , which use the two way acoustic wave equation, offers
+  insights into complex geology that were previously impossible to
+  interpret or understanding using seismic data.  However it is the most
+  computationally-demanding algorithm in the oil and gas exploration which
+  was considered impractical for production 3D depth imaging project using
+  conventional CPUs. Thus hardware accelerator like GPUs and Field
+  Programmable Gate Arrays (FPGAs) emerged and have been used as an
+  alternative for the conventional computing architectures (CPUs) in
+  science computing application and have shown considerable speed-ups.
+  Compared with CPUs, FPGA has a better performance but low power
+  consumption where logics and algorithms are coded directly into hardware,
+  however, only a few applications are implemented on FPGA because the
+  steep learning curve for the developers. This thesis, this work, presents
+  a solution that takes advantages of FPGA's flexibility to explore
+  efficiently data reuse for the 3D Reverse Time Migration algorithm, the
+  seismic modeling. Compared with the CPU implementation using two
+  quad-core Intel i7 CPUs, the FPGA-based solution without any
+  optimization achieves 6x speed-ups on one Xilinx V6-SXT475 FPGA.
+
+  \vspace{4mm}
+
+  \noindent{\emph{Keywords:} \textbf{Reverse Time Migration (RTM); Field
+  Programmable Gate Array (FPGA); Stencil; Performance}}
 \end{abstract}

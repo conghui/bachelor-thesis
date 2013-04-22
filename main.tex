@@ -15,12 +15,15 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{setspace}
+\usepackage{pdfpages}
 \onehalfspacing
 \usepackage[unicode=false,pdfusetitle,
  bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
  breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
  {hyperref}
 
+\newcommand{\Keywords}[1]{\par\noindent
+{\small{\em Keywords\/}: #1}}
 \usepackage{color}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -63,10 +66,12 @@ backgroundcolor=\color{white},   % choose the background color; you must add \us
 
 \begin{document}
 
-\title{FPGA-based Solution for Reverse Time Migration Algorithm}
-\author{Conghui He}
+\includepdf{appendix/cover.pdf}
 
-\maketitle
+% create an blank page
+\newpage
+\thispagestyle{empty}
+\mbox{}
 
 \include{abstract}
 
@@ -79,13 +84,13 @@ backgroundcolor=\color{white},   % choose the background color; you must add \us
 \include{implement}
 \include{comparison}
 \include{conclusion}
-
-%% The following contains your structure of your thesis and your
-%% contribution, comparison with CPU version.
-
-
-% include the bibliography
 \include{bibliography}
-%\input{bibliography.tex}
+
+% include some appendix from PDF file that is generated from doc
+\includepdf{appendix/appendix1_proposal.pdf}
+\includepdf{appendix/appendix2_records.pdf}
+\includepdf{appendix/appendix3_scores.pdf}
+\includepdf{appendix/appendix4_honest_declaration.pdf}
+\includepdf{appendix/appendix5_evaluation.pdf}
 
 \end{document}
