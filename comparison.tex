@@ -150,21 +150,21 @@ It is a good idea to let only one parameter varies while keeping others
 still. So this time, we keep the size of the cube as \( 256 \times 256
 \times 256 \) and let the number of time steps varies. Figure
 (\ref{fig:comparison_3}) depicts the relation between the running time and
-the number of steps of both CPU and FPGA. The shape of the CPU line is 
-pseudo-linear, because as the number of time steps increase, the cache hit 
-rate will decrease and miss rate will increase, resulting in high memory 
-accessing latency, which will decrease the total computational time 
-dramatically. The running time of FPGA is relatively stable than that of 
-CPU, and its slope is much gentle than that of CPU's. The FPGA takes about 
-100 second to make the wave field propagate for 110 steps while the CPU 
-needs about 500 seconds to do the same task. 
+the number of steps of both CPU and FPGA. The shape of the CPU line is
+pseudo-linear, because as the number of time steps increase, the cache hit
+rate will decrease and miss rate will increase, resulting in high memory
+accessing latency, which will decrease the total computational time
+dramatically. The running time of FPGA is relatively stable than that of
+CPU, and its slope is much gentle than that of CPU's. The FPGA takes about
+100 second to make the wave field propagate for 110 steps while the CPU
+needs about 500 seconds to do the same task.
 
-The number of time steps 
-varies from thousands to tens of thousands in practical, and the size of 
-the cube is about hundreds of GB or TBs, which is nearly impossible to 
-store them in local memory. But it is feasible to implement it on FPGA 
-because once the kernel is designed, the data will flow to the kernel 
-element by element like streams. Part of the data can flow to the kernel 
+The number of time steps
+varies from thousands to tens of thousands in practical, and the size of
+the cube is about hundreds of GB or TBs, which is nearly impossible to
+store them in local memory. But it is feasible to implement it on FPGA
+because once the kernel is designed, the data will flow to the kernel
+element by element like streams. Part of the data can flow to the kernel
 first, and then follows another part of the data.
 
 % section Performance comparison (end)

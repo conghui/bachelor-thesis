@@ -1,6 +1,5 @@
 *.aux
 *.log
-*.lyx*
 *.out
 *.toc
 main.pdf

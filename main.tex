@@ -68,13 +68,11 @@ backgroundcolor=\color{white},   % choose the background color; you must add \us
 
 \includepdf{appendix/cover.pdf}
 
-% create an blank page
-\newpage
-\thispagestyle{empty}
-\mbox{}
-
+\pagenumbering{roman}
 \include{abstract}
 
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \tableofcontents
 
 \include{introduction}
