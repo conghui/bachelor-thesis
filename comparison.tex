@@ -1,4 +1,4 @@
-\section{Results And Comparison} % (fold)
+\chapter{Results And Comparison} % (fold)
 
 Given there there is an version of Reverse Time Migration algorithm
 that is implemented on CPU as the benchmark, the comparison is the
@@ -26,9 +26,9 @@ because the running time is linear to the number of shots. I compares
 the running time when the size of cube varies first, and then compare
 the consuming running when the number of time steps varies.
 
-\subsection{Platform Information} % (fold)
+\section{Platform Information} % (fold)
 
-In this subsection, the platform for both the CPU and FPGA is introduced.
+In this section, the platform for both the CPU and FPGA is introduced.
 The comparison in the rest of this section is operated on i7 CPU,
 which includes 8 cores, with the frequency of each core 2.93GHz. The
 FPGA used in this implementation is a \emph{Xilinx V6-SXT475} whose
@@ -70,7 +70,7 @@ to the wall clock.
 \label{ssub:Platform information}
 
 
-\subsection{Running Time vs. Cube Size}
+\section{Running Time vs. Cube Size}
 \label{sub:Running Time vs. Cube Si}
 
 % (fold)
@@ -135,9 +135,9 @@ Express and be transferred back from the device after the calculation.
 On the other hand, the CPU can make full use of cache when the size of the
 array is small, resulting in relative high cache hit rate.
 
-% subsection Running Time vs. Cube Si (end)
+% section Running Time vs. Cube Si (end)
 
-\subsection{Running Time vs.  Time Steps} % (fold)
+\section{Running Time vs.  Time Steps} % (fold)
 
 \begin{figure}[h]
   \centering

@@ -1,6 +1,6 @@
 %% LyX 2.0.3 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[12pt,english]{article}
+\documentclass[12pt,english]{report}
 \usepackage[latin9]{inputenc}
 %\setlength{\headheight}{15pt}
 %\usepackage{fancyhdr}
@@ -60,16 +60,30 @@ backgroundcolor=\color{white},   % choose the background color; you must add \us
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[english]{babel}
 \newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+\usepackage{tocloft,calc}
 
+\renewcommand{\cftchappresnum}{Chapter }
+\AtBeginDocument{\addtolength\cftchapnumwidth{\widthof{\bfseries Chapter }}}
 
 \makeatother
+
 
 \begin{document}
 
 \includepdf{appendix/cover.pdf}
 
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \pagenumbering{roman}
 \include{abstract}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\includepdf[pages={1,2}]{appendix/abstract_chinese.pdf}
 
 \pagenumbering{arabic}
 \setcounter{page}{1}
@@ -82,8 +96,10 @@ backgroundcolor=\color{white},   % choose the background color; you must add \us
 \include{implement}
 \include{comparison}
 \include{conclusion}
-\include{acknowledgement}
 \include{bibliography}
+\include{acknowledgement}
+
+\includepdf[pages={1-12}]{appendix/chinese_version.pdf}
 
 % include some appendix from PDF file that is generated from doc
 \includepdf{appendix/appendix1_proposal.pdf}

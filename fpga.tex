@@ -1,6 +1,6 @@
-\section{Field Programmable Gate Array}
+\chapter{Overview Of Field Programmable Gate Array}
 
-\subsection{An Overview of FPGA}
+\section{An Overview of FPGA}
 Field Programmable Gate Array (FPGA) is a type of integrated circuit (IC)
 containing a matrix of logic cells that can be programmed by a user to act
 as an arbitrary integrated circuit.
@@ -27,7 +27,7 @@ file or bitstream that contains information on how to components should be
 wired together, which makes the task much easier and more and more
 developers devotes their energies to FPGA.
 
-\subsection{The Architecture of FPGA}
+\section{The Architecture of FPGA}
 
 A typical layout of FPGA, Figure (\ref{fig:fpga_arch}) is an array of
 interconnected programmable logic blocks or configurable logic blocks. It
@@ -108,7 +108,7 @@ interconnect all five functional elements, transmitting signals among them.
 Each functional element has an associated switch matrix that permits
 multiple connections to the routing\cite{fpgaug}.
 
-\subsection{Designing FPGA with Maxcompiler}
+\section{Designing FPGA with Maxcompiler}
 
 The usual way to design FPGAs is to write a behavioral model in
 a Hardware Description Language (HDL), like Verilog or VHDL, which
@@ -132,7 +132,7 @@ make full use of FPGA, Maxeler Inc, develops a compiler where software
 engineer can perform configuring developing with their daily used
 developing language, such as C, and Java.
 
-\subsubsection{Maxeler Acceleration Technology}
+\section{Maxeler Acceleration Technology}
 
 \emph{Maxcompiler} is a commercial product that is manufactured by Maxeler.
 It is a compiler system for Maxeler hardware acceleration solutions using
@@ -167,7 +167,7 @@ program describes the computations structurally (in space) rather than
 specifying the sequence of processor instructions (in
 time)\cite{max_white_paper}.
 
-\subsubsection{Development Flow}
+\section{Development Flow}
 If the developer want to accelerate an application after he identifies the
 runtime intensive part of the program, what he needs includes three parts,
 designing the kernel, manager configuration and adapt the host application.
@@ -216,7 +216,7 @@ from/to the FPGA Device.
 The MaxCompiler can link them together in the last stage of the compilation
 and generate the ordinary binary executable file.
 
-\subsection{Advantage of FPGA Designing}
+\section{Advantage of FPGA Designing}
 
 FPGA chip adoption across all industries is driven by the fact that FPGAs
 combine the best parts of ASICs and processor-based systems. FPGAs provide

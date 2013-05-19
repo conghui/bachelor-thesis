@@ -1,6 +1,6 @@
-\section{Introduction}
+\chapter{Introduction}
 
-\subsection{Overview of seismic exploration}
+\section{Overview of seismic exploration}
 The goal of exploration seismology is to find oil and gas reservoirs
 by seismically imaging the earth's reflectivity distribution. Towards
 this goal, exploration geophysicists perform seismic experiments ideally
@@ -26,7 +26,7 @@ a high computational-demanding imaging algorithm.%
 \footnote{The complexity of RTM for a single shot is roughly \BigO{n4}%
 }
 
-\subsection{Improving computing performance}
+\section{Improving computing performance}
 The ultimate and perhaps unattainable goal of computer science is
 to make the computer to do whatever we want in perfect accuracy, speed,
 security and on and on. Over time, the number of transistor on integrated
@@ -39,7 +39,7 @@ keep up. As a result, the performance of the whole system isn't likely
 to improve a lot, and the access latencies frequently become a bottleneck
 in the system.
 
-\subsubsection{Homogeneous architecture} % (fold)
+\subsection{Homogeneous architecture} % (fold)
 \label{ssub:Homogeneous architecture}
 
 Lots of efforts have been made facing with the access latencies, and
@@ -116,7 +116,7 @@ And they need higher computational performance for a higher resolution
 of the simulation.
 
 
-\subsubsection{Hybrid architecture}
+\subsection{Hybrid architecture}
 Some vendors manufacture co-processor to aid CPU to better perform
 general computing. For example, the NVIDIA Cooperation publish its
 GPU accelerating card, which consists of hundreds of core in a single
@@ -148,7 +148,7 @@ In this paper, I present my FPGA-based solution for the Reverse Time
 Migration (RTM) algorithm ~\cite{yoon03}, which is the most computationally-demanding
 imaging algorithms in oil and gas exploration.
 
-\subsection{Reverse Time Migration}
+\section{Reverse Time Migration}
 The Reverse Time Migration (RTM) is a wave equation depth migration
 method. It offers insights into geology that were previously impossible
 to interpret or understand using seismic data.
@@ -177,7 +177,7 @@ and enormous internal memory bandwidth of the FPGA, I manage to implement
 the computationally-demanding Reverse Time Migration algorithm in
 FPGA, which achieves a speed up of 6x time than that of CPU's.
 
-\subsection{Structure of the thesis}
+\section{Structure of the thesis}
 
 By utilizing the abundant computation and storage resource FPGA, the thesis
 introduce the solution for the Reverse Time Migration (RTM) algorithm on

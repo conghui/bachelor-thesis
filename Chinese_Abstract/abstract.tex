@@ -1,0 +1,34 @@
+\documentclass[12pt,UTF8,adobefonts]{ctexrep}
+\usepackage[T1]{fontenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\makeatletter
+
+\makeatother
+
+\begin{document}
+
+\begin{abstract}
+勘探地质学的目标是通过地质成像来发现地质中的石油和天然气等矿物资源. 传统的单向声波pre-stack深度偏移算法的运行速度相当快,
+但对于复杂的地质结构, 如倾角过大, 该算法的成像效果较差, 容易忽略潜在的矿产资源. 逆时偏移算法 (Reverse Time Migration)
+则采用双向声波方程进行反演, 能够对复杂的地质结构进行准确的成像. 然而, RTM算法也是石油和天然气勘探中计算量最大的算法, 过去人们认为传统CPU的计算力无法采用该算法来进行3D地质成像. 
+
+在科技迅猛发展的今天, 优秀的硬件加速卡, 如GPU, FPGA的出现使得RTM算法的实现称为了可能. 同时, 硬件加速卡也可作为其他科学计算的另一种选择,
+且与传统的CPU架构具有更好的优势. 相对了CPU而言, FPGA俱备性能高, 实时性强, 能耗低等特点, 这是因为程序的逻辑和算法直接写入到FPGA的硬件中.
+程序的逻辑和算法直接通过硬件的形式实现, 而非通过指令完成, 因此效率非产高. 但是, 现实中 通过FPGA实现的软件却很少, 这是因为FPGA的开发难度大,
+学习曲线陡峭. 
+
+本文正是在FPGA上设计和实现3D的逆时偏移算法, 并在确保相同输入和输出的情况下与传统的CPU实现进行对比. 实现得出的结果是,
+相对于Intel i7 CPU来说, 通过FPGA实现的方案具有6倍的性能提升.
+
+\medskip{}
+
+\textbf{关键字}: 逆时偏移算法 (RTM), FPGA, 高性能计算
+
+\end{abstract}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\end{document}
